@@ -1,5 +1,5 @@
 import "./ItemListContainer.css";
-import { pedirDatos } from "../functions/PedirDatos";
+// import { pedirDatos } from "../functions/PedirDatos";
 import { useEffect, useState } from "react";
 import ItemList  from './ItemList';
 import { useParams } from "react-router-dom";
@@ -24,27 +24,17 @@ export function ItemListContainer() {
                     const data = doc.data()
                     return {id: doc.id, ...data}
                 })
+                console.log(productsAdapted)
                 setProductos(productsAdapted)
             })
             .catch((error) => console.log(error))
             .finally(() => {});
-    }, [])
+    }, [categoryId])
 
-    //     pedirDatos().then((res) => {
-    //         if (categoryId) {
-    //             // Filtro productos por categoría si se proporciona una
-    //             setProductos(res.filter((prod) => prod.category === categoryId));
-    //             setTitulo(categoryId) // Actualizo el título con la categoría
-    //         } else {
-    //             setProductos(res); // Muestro todos los productos si no hay categoría seleccionada
-    //             setTitulo("Productos"); // Dejo el titulo predeterminado
-    //         }
-    //     });
-    // }, [categoryId]); // Ejecuto este efecto cuando cambie la categoría
-    // return (
-    //     <>
-    //         {/* Renderizo el componente ItemList pasando los productos y el título */}
-    //         <ItemList productos={productos} titulo={titulo} /> 
-    //     </>
-    // );
+    return (
+        <>
+            {/* Renderizo el componente ItemList pasando los productos y el título */}
+            <ItemList productos={productos} titulo={titulo} /> 
+        </>
+    );
 };
