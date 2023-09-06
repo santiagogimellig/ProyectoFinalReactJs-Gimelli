@@ -1,0 +1,49 @@
+@font-face {
+    font-family: 'new zelek';
+    src: url('../assets/font/FontsFree-Net-NewZelek.ttf.ttf');
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f2f2f2;
+    padding: 10px;
+}
+
+.navbar-logo img {
+    width: 80px; 
+    height: auto; 
+}
+
+.navbar-logo,
+.navbar-cart {
+    padding: 5px;
+    font-weight: bold;
+}
+
+.navbar-cart i {
+    font-size: 50px; 
+    display: flex;
+}
+
+.navbar-cart i p {
+    font-family: 'new zelek';
+    font-size: 20px;
+}
+
+.navbar-links {
+    display: flex;
+    font-family: 'new zelek', sans-serif; 
+    gap: 50px;
+}
+
+.navbar-links a {
+    padding: 5px 8px; 
+    text-decoration: none;
+    color: #333;
+}
+
+.navbar-links a:hover {
+    background-color: #ddd;
+}
