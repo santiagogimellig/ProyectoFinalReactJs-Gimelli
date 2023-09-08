@@ -7,17 +7,18 @@ import { getDocs, collection, query, where} from 'firebase/firestore';
 import { firestore } from '../firebase/firebase';
 
 export function ItemListContainer() {
-    // Defino estados para productos y título
+    // Defino estados para productos y titulo.
     const [productos, setProductos] = useState([]);
     const [titulo, setTitulo] = useState("productos");
-    // Obtengo el parámetro de categoría de la URL 
+    // Obtengo el parametro de categoria de la URL .
     const { categoryId } = useParams();
 
-    // Efecto que se ejecuta cuando cambia la categoría seleccionada
+    // Efecto que se ejecuta cuando cambia la categoria seleccionada.
     useEffect(() => {
         const collectionRef = categoryId
             ? query(collection(firestore, 'items'), where('category', '==', categoryId))
             : collection(firestore, 'items')
+            //Obtengo documentos de Firestore.
             getDocs(collectionRef)
             .then(response => {
                 const productsAdapted = response.docs.map(doc => {
@@ -25,6 +26,7 @@ export function ItemListContainer() {
                     return {id: doc.id, ...data}
                 })
                 console.log(productsAdapted)
+                //Actualizo el estado con los productos obtenidos.
                 setProductos(productsAdapted)
             })
             .catch((error) => console.log(error))
