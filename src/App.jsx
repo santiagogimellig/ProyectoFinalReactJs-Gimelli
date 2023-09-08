@@ -7,28 +7,20 @@ import Cart from './components/Cart';
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import { firestore } from './firebase/firebase';
 import CartProvider from './context/CartContext';
+import Checkout from './components/Checkout';
 
 function App() {
-    // useEffect(() => {
-    //     const collectionRef = collection(firestore, "items");
-    //     getDocs(collectionRef)
-    //         .then(snapshot => {
-    //             console.log({snapshot});
-    //             snapshot.forEach((doc) => console.log(doc.data()));
-    //         })
-    //         .catch((error) => console.log(error))
-    //         .finally(() => {});
-    // }, [])
     return (
         <>
         <BrowserRouter>
             <CartProvider>
             <NavBar />
                 <Routes>
-                <Route path="/" element={<ItemListContainer />} />
+                    <Route path="/" element={<ItemListContainer />} />
                     <Route path="/category/:categoryId" element={<ItemListContainer />} />
                     <Route path="/item/:itemId" element={<ItemDetailContainer />} />
                     <Route path="/cart" element={<Cart />}/>
+                    <Route path="/checkout" element={<Checkout />}/>
                 </Routes>
             </CartProvider>
         </BrowserRouter>
